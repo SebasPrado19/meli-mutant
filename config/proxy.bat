@@ -1,0 +1,1 @@
+gcloud config set project meli-gen-mutante && cloud_sql_proxy -instances meli-gen-mutante:us-central1:gen-mutante=tcp:3306
