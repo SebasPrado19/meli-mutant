@@ -1,0 +1,9 @@
+runtime: nodejs12
+env: standard
+service: default
+instance_class: F1
+vpc_access_connector:
+  name: projects/meli-gen-mutante/locations/us-central1/connectors/mutant-engine 
+
+env_variables:
+  CLOUD: true
