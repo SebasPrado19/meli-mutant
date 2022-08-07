@@ -16,13 +16,9 @@ module.exports.createPool = async () => {
     });
 
     const credentials = JSON.parse(secret.payload.data.toString())
-    console.log('CLOUD', CLOUD)
     if (!CLOUD) {
       credentials['host'] = '127.0.0.1'
     }
-
-    credentials["connectionLimit"] = 20;
-    credentials["multipleStatements"] = true;
 
     const pool = mysql.createPool(credentials);
     return pool;
