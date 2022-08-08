@@ -1,5 +1,6 @@
 const mysql = require("mysql")
 const { SecretManagerServiceClient } = require("@google-cloud/secret-manager")
+const server = require('../server')
 
 
 const CLOUD = process.env.CLOUD || false
@@ -27,7 +28,9 @@ module.exports.createPool = async () => {
   }
 };
 
-module.exports.query = async (con, sql, binds = null) => {
+module.exports.query = async (sql, binds = null) => {
+
+  const con = server.GLOBAL.CONNECTION
   return new Promise((resolve, reject) => {
     con.query(sql, binds, (err, result, fields) => {
       if (err) reject(err)

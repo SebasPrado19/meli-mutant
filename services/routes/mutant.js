@@ -1,13 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const mutant_controller = require('../controllers/mutant')
-const index = require('../../server')
 const db_connection = require('../../util/db_connection')
 
 router.post('/', async (req, res) => {
 
   const { dna } = req.body
-  const con = index.GLOBAL.CONNECTION
 
   // ejecuta la verificacion de si es o no mutante
   const is_mutant = await mutant_controller.isMutant(dna)
@@ -19,7 +17,7 @@ router.post('/', async (req, res) => {
     is_mutant
   ]
 
-  await db_connection.query(con, sql, binds)
+  await db_connection.query(sql, binds)
 
   if (is_mutant) {
     res.status(200).send({
@@ -36,10 +34,9 @@ router.get('/stats', async (req, res) => {
   // Obtiene las estadisticas de mutantes, humanos y muestras tomadas
 
   try {
-    const con = index.GLOBAL.CONNECTION
     const sql = `SELECT is_mutant, count(*) as total  FROM tbl_stats group by is_mutant;`;
 
-    const result = await db_connection.query(con, sql);
+    const result = await db_connection.query(sql);
     const count_mutant_dna = result.find(x=> x.is_mutant == 1).total
     const count_human_dna = result.find(x=> x.is_mutant == 0).total
     const ratio = count_mutant_dna / (count_mutant_dna + count_human_dna) // Calcula el ratio de mutantes dentro del total de muestras tomadas
