@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# secret manager key
+util/secret_manager_key.json

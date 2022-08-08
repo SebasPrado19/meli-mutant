@@ -1,28 +1,36 @@
 const mysql = require("mysql")
+const { SecretManagerServiceClient } = require("@google-cloud/secret-manager")
+const server = require('../server')
+
+
+const CLOUD = process.env.CLOUD || false
+
+const SMClient = new SecretManagerServiceClient({
+  keyFilename: __dirname + '/secret_manager_key.json',
+});
 
 module.exports.createPool = async () => {
-  // Crearr pool de conexión a la base de datos
-  // const [secret] = await SMClient.accessSecretVersion({
-  //   name: server.GLOBAL.ONE_FACES_SECRET,
-  // });
+  try {
+    // Crearr pool de conexión a la base de datos
+    const [secret] = await SMClient.accessSecretVersion({
+      name: 'projects/959341657400/secrets/db-connection/versions/latest',
+    });
 
-  // const credentials = JSON.parse(secret.payload.data.toString());
-  const credentials = {
-    host: '127.0.0.1',
-    port: '3306',
-    user: 'root',
-    password: 'pb)OV]qIKqg]?gD^',
-    database: 'gen-mutante'
+    const credentials = JSON.parse(secret.payload.data.toString())
+    if (!CLOUD) {
+      credentials['host'] = '127.0.0.1'
+    }
+
+    const pool = mysql.createPool(credentials);
+    return pool;
+  } catch (err) {
+    console.log('ERROR', err)
   }
-
-  credentials["connectionLimit"] = 20;
-  credentials["multipleStatements"] = true;
-
-  const pool = mysql.createPool(credentials);
-  return pool;
 };
 
-module.exports.query = async (con, sql, binds = null) => {
+module.exports.query = async (sql, binds = null) => {
+
+  const con = server.GLOBAL.CONNECTION
   return new Promise((resolve, reject) => {
     con.query(sql, binds, (err, result, fields) => {
       if (err) reject(err)
