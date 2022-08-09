@@ -2,7 +2,13 @@
 
 Testeo de cadenas de ADN el cual identifica si dentro de esta contiene el gen mutante
 
-### Prerequisitos
+### Pre-requisitos
+
+#### GCloud CLI instalado
+
+Debe tener instalado y configurado con su cuenta el CLI de GCloud en su máquina.
+
+Para tener información adicional acerca de esta instalación y configuración visite https://cloud.google.com/sdk/docs/install?hl=es-419 
 
 #### Acceso al proyecto para conectar con la base de datos
 
@@ -28,7 +34,7 @@ Puede verificar por medio del siguiente comando en la terminal si tiene instalad
 $ node -v
 ```
 
-Debe verificar que exista el archivo secret_manager_key.json en la ruta ./util/
+Debe verificar que exista el archivo secret_manager_key.json en la ruta ./util/ en caso de no tenerlo, debe solicitarlo al propietario.
 
 Debe poder ejecutar el archivo ./config/proxy.bat (en Windows) y obtener una conexión exitosa hacia la base de datos
 
