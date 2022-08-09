@@ -51,7 +51,7 @@ $ npm install
 
 ### Pruebas unitarias
 
-Estas pruebas se encuentran alojadas en el archivo mutant.test.js
+Estas pruebas se encuentran alojadas en el archivo ./test/mutant.test.js
 
 Para ejecutar las pruebas unitarias se debe lanzar el siguiente comando en la terminal
 
