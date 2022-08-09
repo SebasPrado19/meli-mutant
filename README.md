@@ -66,7 +66,29 @@ $ Server listening on port 8000...
 ```
 En caso de querer cambiar el puerto de ejecución se debe realizar este cambio en el archivo server.js.
 
-### Pruebas locales
+### Pruebas unitarias
+
+Estas pruebas se encuentran alojadas en el archivo mutant.test.js
+
+Para ejecutar las pruebas unitarias se debe lanzar el siguiente comando en la terminal
+
+```bash
+$ npm test
+```
+Se debe obtener la siguiente respuesta 
+
+```bash
+ PASS  test/mutant.test.js
+  √ check mutant dna string (3 ms)
+  √ check no mutant dna string (1 ms)                                                                                                                                   
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        0.712 s, estimated 1 s
+Ran all test suites.
+```
+
+### Probando el módulo
 
 A continuación se exponen los servicios que existen dentro del módulo.
 
@@ -136,4 +158,7 @@ El cual retornará la siguiente respuesta
 
 Donde count_mutant_dna corresponde a la cantidad de mutantes encontrados, count_human_dna corresponde a la cantidad de no mutantes, y ratio el porcentaje de mutantes respecto al total de muestras tomadas.
 
+### Servicio expuesto
+
+Se pueden realizar pruebas a un servicio expueso bajo el dominio https://meli-gen-mutante.uc.r.appspot.com
 
