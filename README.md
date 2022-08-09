@@ -84,6 +84,8 @@ Para realizar la validación, el módulo se asegura de que la matriz enviada ten
 
 Se identifica como cadena portadora del gen mutante a aquella que dentro de su matriz contenga 4 o más letras iguales de forma horizontal, vertical u oblicua de izquierda a derecha y de derecha a izquierda.
 
+```bash
+
 A T G C G A                 A T G C G A
 C A G T G C                 C A G T G C
 T T A T T T                 T T A T G T
@@ -92,7 +94,7 @@ G C G T C A                 C C C C T A
 T C A C T G                 T C A C T G
 
 No-Mutante                  Mutante
-
+```
 
 Solo se tendrán en cuenta como gen x (mutante) cadenas seguidas con las letras A,T,C,G.
 
