@@ -58,15 +58,15 @@ Debe aparecer el siguiente mensaje en terminal
 ```bash
 $ Server listening on port 8000...
 ```
-En caso de querer cambiar el puerto de ejecución se debe realizar este cambio en el archivo server.js
+En caso de querer cambiar el puerto de ejecución se debe realizar este cambio en el archivo server.js.
 
 ### Pruebas locales
 
-Existen 2 peticiones que se pueden realizar
+A continuación se exponen los servicios que existen dentro del módulo.
 
-#### 1. Consulta de ADN mutante
+#### Consulta de ADN mutante
 
-Para consultar si una cadena de ADN es mutante se debe enviar por medio de método POST a la ruta /mutant/ el body con la siguiente estructura (ejemplo caso mutante)
+Para consultar si una cadena de ADN es mutante se debe enviar por medio de método POST a la ruta /mutant/ el body con la siguiente estructura (ejemplo caso mutante).
 
 ```bash
 {
@@ -80,7 +80,7 @@ Para consultar si una cadena de ADN es mutante se debe enviar por medio de méto
     ]
 }
 ```
-Para realizar la validación, el módulo se asegura de que la matriz enviada tenga una dimensión de NxN de lo contrario tomará como una cadena no mutante
+Para realizar la validación, el módulo se asegura de que la matriz enviada tenga una dimensión de NxN de lo contrario tomará como una cadena no mutante.
 
 Se identifica como cadena portadora del gen mutante a aquella que dentro de su matriz contenga 4 o más letras iguales de forma horizontal, vertical u oblicua de izquierda a derecha y de derecha a izquierda.
 
@@ -99,6 +99,7 @@ No-Mutante                  Mutante
 Solo se tendrán en cuenta como gen x (mutante) cadenas seguidas con las letras A,T,C,G.
 
 Si la cadena es portadora del gen mutante se responde con un HTTP-200 OK y el mensaje
+
 ```bash
 {
     "success": "Se ha identificado un ADN mutante"
@@ -115,9 +116,9 @@ En caso contrario se retorna un estado HTTP-403 forbidden y el mensaje
 
 #### Consulta de estadísticas
 
-Se pueden consultar las estadísticas por medio de una consulta por el método GET a la ruta /mutant/stats
+Se pueden consultar las estadísticas por medio de una consulta por el método GET a la ruta /mutant/stats.
 
-el cual retornará la siguiente respuesta.
+El cual retornará la siguiente respuesta
 
 ```bash
 {
@@ -128,6 +129,5 @@ el cual retornará la siguiente respuesta.
 ```
 
 Donde count_mutant_dna corresponde a la cantidad de mutantes encontrados, count_human_dna corresponde a la cantidad de no mutantes, y ratio el porcentaje de mutantes respecto al total de muestras tomadas.
-
 
 
