@@ -49,7 +49,29 @@ $ npm install
 
 ## Probando el módulo
 
-### Configuración de pruebas
+### Pruebas unitarias
+
+Estas pruebas se encuentran alojadas en el archivo mutant.test.js
+
+Para ejecutar las pruebas unitarias se debe lanzar el siguiente comando en la terminal
+
+```bash
+$ npm test
+```
+Se debe obtener la siguiente respuesta 
+
+```bash
+ PASS  test/mutant.test.js
+  √ check mutant dna string (3 ms)
+  √ check no mutant dna string (1 ms)
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        0.712 s, estimated 1 s
+Ran all test suites.
+```
+
+### Configuración de pruebas locales
 
 Durante el tiempo que dure las pruebas de manera local, se debe mantener activa la ejecución del archivo ./config/proxy.bat
 
@@ -66,29 +88,7 @@ $ Server listening on port 8000...
 ```
 En caso de querer cambiar el puerto de ejecución se debe realizar este cambio en el archivo server.js.
 
-### Pruebas unitarias
-
-Estas pruebas se encuentran alojadas en el archivo mutant.test.js
-
-Para ejecutar las pruebas unitarias se debe lanzar el siguiente comando en la terminal
-
-```bash
-$ npm test
-```
-Se debe obtener la siguiente respuesta 
-
-```bash
- PASS  test/mutant.test.js
-  √ check mutant dna string (3 ms)
-  √ check no mutant dna string (1 ms)                                                                                                                                   
-Test Suites: 1 passed, 1 total
-Tests:       2 passed, 2 total
-Snapshots:   0 total
-Time:        0.712 s, estimated 1 s
-Ran all test suites.
-```
-
-### Probando el módulo
+### Pruebas locales
 
 A continuación se exponen los servicios que existen dentro del módulo.
 
