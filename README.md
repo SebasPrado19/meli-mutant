@@ -116,7 +116,7 @@ En caso contrario se retorna un estado HTTP-403 forbidden y el mensaje
 
 #### Consulta de estadísticas
 
-Se pueden consultar las estadísticas por medio de una consulta por el método GET a la ruta /mutant/stats.
+Se pueden consultar las estadísticas por medio de una petición por medio del método GET a la ruta /mutant/stats.
 
 El cual retornará la siguiente respuesta
 
