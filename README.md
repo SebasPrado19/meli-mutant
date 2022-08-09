@@ -1,6 +1,6 @@
 # Prueba Mutante
 
-Testeo de cadenas de ADN el cual identifica si existe dentro de esta contiene el gen mutante
+Testeo de cadenas de ADN el cual identifica si dentro de esta contiene el gen mutante
 
 ### Prerequisitos
 
@@ -66,15 +66,17 @@ Existen 2 peticiones que se pueden realizar
 
 #### 1. Consulta de ADN mutante
 
-Para consultar si una cadena de ADN es mutante se debe enviar por medio de método POST a la ruta /mutant/ el body con la siguiente estructura
+Para consultar si una cadena de ADN es mutante se debe enviar por medio de método POST a la ruta /mutant/ el body con la siguiente estructura (ejemplo caso mutante)
 
 ```bash
 {
     "dna": [
-        "CCCC",
-        "CCGT",
-        "TCAT",
-        "ACTC"
+        "ATGCGA",
+        "CAGTGC",
+        "TTATGT",
+        "AGAAGG",
+        "CCCCTA",
+        "TCACTG"
     ]
 }
 ```
@@ -82,7 +84,17 @@ Para realizar la validación, el módulo se asegura de que la matriz enviada ten
 
 Se identifica como cadena portadora del gen mutante a aquella que dentro de su matriz contenga 4 o más letras iguales de forma horizontal, vertical u oblicua de izquierda a derecha y de derecha a izquierda.
 
-Solo se tendrán en cuenta cadenas seguidas con las letras A,T,C,G.
+A T G C G A                 A T G C G A
+C A G T G C                 C A G T G C
+T T A T T T                 T T A T G T
+A G A C G G                 A G A A G G
+G C G T C A                 C C C C T A
+T C A C T G                 T C A C T G
+
+No-Mutante                  Mutante
+
+
+Solo se tendrán en cuenta como gen x (mutante) cadenas seguidas con las letras A,T,C,G.
 
 Si la cadena es portadora del gen mutante se responde con un HTTP-200 OK y el mensaje
 ```bash
