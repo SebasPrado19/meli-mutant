@@ -1,30 +1,19 @@
-runtime: nodejs
-env: flex
+runtime: nodejs12
+env: standard
 service: default
 
+# Estandar
+
+instance_class: F4_1G
+vpc_access_connector:
+  name: projects/meli-gen-mutante/locations/us-central1/connectors/mutant-engine 
+
 automatic_scaling:
-  min_num_instances: 2
-  cool_down_period_sec: 100
-  cpu_utilization:
-    target_utilization: 0.4
-
-resources:
-  cpu: 2
-  memory_gb: 4
-  disk_size_gb: 10
-
-# flexible
-
-# instance_class: F4_1G
-# vpc_access_connector:
-#   name: projects/meli-gen-mutante/locations/us-central1/connectors/mutant-engine 
-
-# automatic_scaling:
-#   min_instances: 1
-#   target_throughput_utilization: 0.65
-#   max_concurrent_requests: 500
-#   min_pending_latency: 30ms
-#   max_pending_latency: automatic
+  min_instances: 1
+  target_throughput_utilization: 0.65
+  max_concurrent_requests: 500
+  min_pending_latency: 30ms
+  max_pending_latency: automatic
 
 env_variables:
   CLOUD: true

@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
         });
       } else {
         res.status(403).send({
-          error: "forbiden west",
+          error: "forbidden access",
         })
       }
     } else {
